@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "update_ip_to_cf"
+version = "0.0.0"
+description = ""
+authors = ["LiXu <hugh@contek.io>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "*"
+psutil = "*"
+pycryptodome = "*"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.5.0"
+
+[[tool.poetry.source]]
+name = "tencent-source"
+url = "https://mirrors.cloud.tencent.com/pypi/simple"
+priority = "primary"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 200
+ignore = ["F403"]
