@@ -1,4 +1,4 @@
-# 更新IP地址到CloudFlare DNS
+# 从TPLink路由器读取WAN IP并更新到CloudFlare DNS
 
 # install
 
