@@ -6,6 +6,12 @@
 poetry install
 ```
 
+# run
+
+```
+poetry run python update_ip_to_cf.py
+```
+
 # 文件
 
 `tplink.py` 自己调试好的tplink路由器认证以及获取WLAN地址逻辑
