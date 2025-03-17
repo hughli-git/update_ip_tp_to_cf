@@ -5,10 +5,7 @@ import json
 class CloudflareDns:
     def __init__(self, api_token, zone_name):
         self.api_url = "https://api.cloudflare.com/client/v4"
-        self.headers = {
-            "Authorization": f"Bearer {api_token}",
-            "Content-Type": "application/json"
-        }
+        self.headers = {"Authorization": f"Bearer {api_token}", "Content-Type": "application/json"}
         self.zone_id = self.get_zone_id(zone_name)
 
     def get_zone_id(self, domain):
@@ -41,11 +38,12 @@ class CloudflareDns:
             "name": record_name,
             "content": new_ip,
             "ttl": ttl,  # 自动 TTL
-            "proxied": proxied  # 是否通过 Cloudflare 代理
+            "proxied": proxied,  # 是否通过 Cloudflare 代理
         }
         response = requests.put(url, headers=self.headers, data=json.dumps(data))
         response.raise_for_status()
         return response.json()
+
 
 if __name__ == "__main__":
     obj = CloudflareDns("000000000oQxCG3hBCuT4DPr9_Pqf3CVKL7170000", "passdomain.cn")

@@ -3,10 +3,7 @@ from Crypto.Util.number import bytes_to_long, long_to_bytes
 import requests
 import re
 import json
-import time
 import codecs
-import math
-from struct import unpack
 
 
 class TPlink:
@@ -40,7 +37,7 @@ class TPlink:
         rsa_public_exp = bytes_to_long(bytes.fromhex(self.password_rsa_public_key[1]))
 
         public_key = RSA.construct((rsa_modulus_n, rsa_public_exp))
-        
+
         message = self.password.encode("utf-8")
         # 加密长度
         k = public_key.size_in_bytes()
@@ -123,7 +120,7 @@ class TPlink:
             print(error_code, ret_data)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     tp = TPlink("192.168.60.1", "admin", "admin_pass")
     tp._get_auth_tokens_rsa()
     print(tp.get_wan_ip_list())

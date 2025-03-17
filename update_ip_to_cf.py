@@ -38,10 +38,10 @@ def main():
                 cached_ip[key] = ret[key]
                 log(f"start update CF {key} {secret_settings.DOMAIN_LIST[key]} {ret[key]}")
                 update_result = cf_obj.update_dns_record(secret_settings.DOMAIN_LIST[key], ret[key])
-                if not update_result['success']:
+                if not update_result["success"]:
                     log(f"ERROR update {update_result}")
             log("finish update")
-        except:
+        except:  # noqa: E722
             log(traceback.format_exc())
 
 
@@ -50,6 +50,6 @@ if __name__ == "__main__":
     while True:
         try:
             main()
-        except:
+        except:  # noqa: E722
             log(traceback.format_exc())
         time.sleep(secret_settings.PERIOD_UPDATE)
