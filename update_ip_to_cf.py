@@ -20,7 +20,6 @@ def main():
     tp._get_auth_tokens_rsa()
     cached_ip = {}
     while True:
-        time.sleep(secret_settings.PERIOD_UPDATE)
         try:
             ret = tp.get_wan_ip_list()
             log(f"get IP {ret}")
@@ -34,6 +33,7 @@ def main():
 
             for key in ret:
                 if key in cached_ip and cached_ip[key] == ret[key]:
+                    time.sleep(secret_settings.PERIOD_UPDATE)
                     continue
                 cached_ip[key] = ret[key]
                 log(f"start update CF {key} {secret_settings.DOMAIN_LIST[key]} {ret[key]}")
@@ -43,6 +43,7 @@ def main():
             log("finish update")
         except:  # noqa: E722
             log(traceback.format_exc())
+        time.sleep(secret_settings.PERIOD_UPDATE)
 
 
 if __name__ == "__main__":
